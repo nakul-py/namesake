@@ -38,7 +38,7 @@ const EditNameModal = ({
     setError(undefined);
 
     if (name.length > 100) {
-      setError("Name must be less than 100 characters");
+      setError("Name must be less than 100 characters.");
       return;
     }
 
@@ -63,8 +63,8 @@ const EditNameModal = ({
       <Form onSubmit={handleSubmit} className="w-full">
         {error && <Banner variant="danger">{error}</Banner>}
         <TextField
-          name="name"
           label="Name"
+          name="name"
           value={name}
           onChange={(value) => {
             setName(value);
