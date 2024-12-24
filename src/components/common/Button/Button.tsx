@@ -11,12 +11,12 @@ export interface ButtonProps extends AriaButtonProps {
   children?: React.ReactNode;
   icon?: LucideIcon;
   variant?: "primary" | "secondary" | "destructive" | "icon" | "ghost";
-  size?: "small" | "medium";
+  size?: "small" | "medium" | "large";
 }
 
 export const buttonStyles = tv({
   extend: focusRing,
-  base: "py-2 text-sm font-medium whitespace-nowrap rounded-lg flex gap-1.5 items-center justify-center border border-black/10 dark:border-white/10",
+  base: "py-2 text-sm font-medium whitespace-nowrap rounded-lg flex gap-1.5 items-center justify-center border border-gray-dim transition",
   variants: {
     variant: {
       primary: "bg-purple-solid text-white",
@@ -29,6 +29,7 @@ export const buttonStyles = tv({
     size: {
       small: "h-8 px-2",
       medium: "h-10 px-3",
+      large: "h-12 px-3.5 text-lg",
     },
     isDisabled: {
       false: "cursor-pointer",
@@ -73,7 +74,12 @@ export function Button({
         }),
       )}
     >
-      {Icon && <Icon size={16} />}
+      {Icon && (
+        <Icon
+          size={size === "large" ? 20 : 16}
+          strokeWidth={size === "large" ? 2.5 : 2}
+        />
+      )}
       {children}
     </AriaButton>
   );
